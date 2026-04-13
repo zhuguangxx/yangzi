@@ -7,8 +7,8 @@ export default defineConfig({
   root: '.',
   publicDir: 'public',
   build: {
-    outDir: 'public',
-    emptyOutDir: false,
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
@@ -21,11 +21,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
-      },
-      '/uploads': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:80',
         changeOrigin: true
       }
     }

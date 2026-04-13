@@ -15,6 +15,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/health', (req, res) => {
+  res.json({
+    ok: true,
+    env: {
+      SUPABASE_URL: process.env.SUPABASE_URL ? 'SET' : 'MISSING',
+      SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY ? 'SET' : 'MISSING',
+      ADMIN_PASSWORD: process.env.ADMIN_PASSWORD ? 'SET' : 'MISSING'
+    }
+  });
+});
+
 app.post('/auth/login', async (req, res) => {
   const { phone } = req.body;
   if (!phone) return res.json({ ok: false, msg: '请输入手机号' });

@@ -3,18 +3,6 @@
   "installCommand": "npm install",
   "outputDirectory": "./dist",
   "nodeVersion": "20.18.0",
-  "rewrites": [
-    {
-      "source": "/api/*",
-      "destination": "/api/:splat",
-      "has": [
-        {
-          "type": "host",
-          "value": "*"
-        }
-      ]
-    }
-  ],
   "cloudFunctions": {
     "nodejs": {
       "includeFiles": [
